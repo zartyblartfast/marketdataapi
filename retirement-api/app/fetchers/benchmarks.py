@@ -20,6 +20,10 @@ SERIES = {
         "ticker": "VSS",
         "label": "Global Small-Cap Equity",
     },
+    "uk_largecap": {
+        "ticker": "EWU",
+        "label": "UK Large-Cap Equity",
+    },
     "global_property": {
         "ticker": "VNQ",
         "label": "Global Property / REITs",

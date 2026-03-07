@@ -51,7 +51,7 @@ console.log(data.interest_rates.nations.US.rate);                   // e.g. 0.03
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/health` | GET | Service health and version |
-| `/api/v1/benchmarks` | GET | Trailing 1-year returns for equity, bond, small-cap & property ETFs |
+| `/api/v1/benchmarks` | GET | Trailing 1-year returns for equity, bond, small-cap, property & UK large-cap ETFs |
 | `/api/v1/inflation` | GET | Year-on-year CPI inflation rates by nation |
 | `/api/v1/interest-rates` | GET | Current central bank / policy interest rates by nation |
 | `/api/v1/reference-data` | GET | **Combined** — all benchmarks, inflation & interest rates |
@@ -94,7 +94,7 @@ curl https://marketdata.countdays.co.uk/health
 
 ## 4. Benchmarks — Trailing 1-Year Returns
 
-Returns annualized 1-year total returns for five asset-class proxy ETFs. These represent broad market performance and can be used to **auto-fill growth rate assumptions** in the Retirement Income Planner.
+Returns annualized 1-year total returns for six asset-class proxy ETFs. These represent broad market performance and can be used to **auto-fill growth rate assumptions** in the Retirement Income Planner.
 
 ### Request
 
@@ -144,6 +144,14 @@ curl https://marketdata.countdays.co.uk/api/v1/benchmarks
             "return_1y": 0.324791,
             "source": "tiingo"
         },
+        "uk_largecap": {
+            "label": "UK Large-Cap Equity",
+            "latest_price": 46.02,
+            "price_date": "2026-03-06",
+            "proxy": "EWU",
+            "return_1y": 0.285200,
+            "source": "tiingo"
+        },
         "global_property": {
             "label": "Global Property / REITs",
             "latest_price": 93.55,
@@ -176,6 +184,7 @@ curl https://marketdata.countdays.co.uk/api/v1/benchmarks
 | `emerging_equity` | VWO | Emerging Market Equity | Higher-risk growth |
 | `global_bonds` | BND | Global Bonds | Conservative / income |
 | `global_smallcap` | VSS | Global Small-Cap Equity | Small-cap growth / diversification |
+| `uk_largecap` | EWU | UK Large-Cap Equity | UK blue-chip / FTSE 100 exposure |
 | `global_property` | VNQ | Global Property / REITs | Real asset diversification |
 
 ### Converting Returns to Percentages
