@@ -72,13 +72,14 @@ The API publishes three categories of data.
 
 ### 3.1 Global Market Benchmarks
 
-Four benchmark series representing the major asset classes found in retirement portfolios. These are **global** (not country-specific).
+Five benchmark series representing the major asset classes found in retirement portfolios. These are **global** (not country-specific).
 
 | Internal Key | Asset Class | ETF Proxy | Source |
 |---|---|---|---|
 | `developed_equity` | Developed market equities | VTI | Tiingo |
 | `emerging_equity` | Emerging market equities | VWO | Tiingo |
 | `global_bonds` | Global bond markets | BND | Tiingo |
+| `global_smallcap` | Global small-cap equities | VSS | Tiingo |
 | `global_property` | Global property / REITs | VNQ | Tiingo |
 
 For each benchmark the API provides:
@@ -230,6 +231,14 @@ Response:
       "proxy": "BND",
       "source": "tiingo"
     },
+    "global_smallcap": {
+      "label": "Global Small-Cap Equity",
+      "latest_price": 150.10,
+      "return_1y": 0.324791,
+      "price_date": "2026-03-06",
+      "proxy": "VSS",
+      "source": "tiingo"
+    },
     "global_property": {
       "label": "Global Property / REITs",
       "latest_price": 89.42,
@@ -298,6 +307,7 @@ Response:
     "developed_equity": {"latest_price": 281.42, "return_1y": 0.082, "proxy": "VTI"},
     "emerging_equity": {"latest_price": 41.18, "return_1y": 0.045, "proxy": "VWO"},
     "global_bonds": {"latest_price": 73.51, "return_1y": 0.031, "proxy": "BND"},
+    "global_smallcap": {"latest_price": 150.10, "return_1y": 0.325, "proxy": "VSS"},
     "global_property": {"latest_price": 89.42, "return_1y": 0.056, "proxy": "VNQ"}
   },
   "inflation": {

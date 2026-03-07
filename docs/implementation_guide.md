@@ -31,7 +31,7 @@ Create these accounts and obtain API keys **before starting development**:
 
 | Provider | URL | Key Required | Purpose |
 |---|---|---|---|
-| Tiingo | https://www.tiingo.com | Yes | Benchmark ETF prices (VTI, VWO, BND, VNQ) |
+| Tiingo | https://www.tiingo.com | Yes | Benchmark ETF prices (VTI, VWO, BND, VSS, VNQ) |
 | FRED | https://fred.stlouisfed.org/docs/api/api_key.html | Yes | US inflation (CPI) and interest rate (Fed Funds) |
 
 The following are public APIs with no key required:
@@ -280,6 +280,10 @@ SERIES = {
     "global_bonds": {
         "ticker": "BND",
         "label": "Global Bonds",
+    },
+    "global_smallcap": {
+        "ticker": "VSS",
+        "label": "Global Small-Cap Equity",
     },
     "global_property": {
         "ticker": "VNQ",

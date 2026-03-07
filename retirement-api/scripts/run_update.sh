@@ -21,6 +21,9 @@ fi
 "${PYTHON}" "${PROJ_DIR}/scripts/update_all.py"
 EXIT_CODE=$?
 
+# Ensure data files are readable by the web server
+chown www-data:www-data "${PROJ_DIR}"/data/*.json 2>/dev/null || true
+
 if [ $EXIT_CODE -eq 0 ]; then
     echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] Data refresh completed successfully"
 else

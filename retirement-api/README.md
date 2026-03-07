@@ -28,6 +28,7 @@ All personal financial data stays in the browser; this API only serves **public 
 | Developed Equity | VTI | Vanguard Total Stock Market |
 | Emerging Equity | VWO | Vanguard Emerging Markets |
 | Global Bonds | BND | Vanguard Total Bond Market |
+| Global Small-Cap | VSS | Vanguard FTSE All-World ex-US Small-Cap |
 | Global Property | VNQ | Vanguard Real Estate |
 
 ## API Endpoints
@@ -56,6 +57,13 @@ Base URL: `http://YOUR_SERVER/api/v1`
       "name": "Vanguard Total Stock Market ETF",
       "price": 331.41,
       "return_1y": 0.1895,
+      "currency": "USD"
+    },
+    "global_smallcap": {
+      "ticker": "VSS",
+      "name": "Vanguard FTSE All-World ex-US Small-Cap ETF",
+      "price": 150.10,
+      "return_1y": 0.3248,
       "currency": "USD"
     }
   }

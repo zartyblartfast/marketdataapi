@@ -16,6 +16,10 @@ SERIES = {
         "ticker": "BND",
         "label": "Global Bonds",
     },
+    "global_smallcap": {
+        "ticker": "VSS",
+        "label": "Global Small-Cap Equity",
+    },
     "global_property": {
         "ticker": "VNQ",
         "label": "Global Property / REITs",

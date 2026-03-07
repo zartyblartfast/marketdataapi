@@ -51,7 +51,7 @@ console.log(data.interest_rates.nations.US.rate);                   // e.g. 0.03
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/health` | GET | Service health and version |
-| `/api/v1/benchmarks` | GET | Trailing 1-year returns for equity, bond & property ETFs |
+| `/api/v1/benchmarks` | GET | Trailing 1-year returns for equity, bond, small-cap & property ETFs |
 | `/api/v1/inflation` | GET | Year-on-year CPI inflation rates by nation |
 | `/api/v1/interest-rates` | GET | Current central bank / policy interest rates by nation |
 | `/api/v1/reference-data` | GET | **Combined** — all benchmarks, inflation & interest rates |
@@ -94,7 +94,7 @@ curl https://marketdata.countdays.co.uk/health
 
 ## 4. Benchmarks — Trailing 1-Year Returns
 
-Returns annualized 1-year total returns for four asset-class proxy ETFs. These represent broad market performance and can be used to **auto-fill growth rate assumptions** in the Retirement Income Planner.
+Returns annualized 1-year total returns for five asset-class proxy ETFs. These represent broad market performance and can be used to **auto-fill growth rate assumptions** in the Retirement Income Planner.
 
 ### Request
 
@@ -167,6 +167,7 @@ curl https://marketdata.countdays.co.uk/api/v1/benchmarks
 | `developed_equity` | VTI | Developed Market Equity | Growth allocation |
 | `emerging_equity` | VWO | Emerging Market Equity | Higher-risk growth |
 | `global_bonds` | BND | Global Bonds | Conservative / income |
+| `global_smallcap` | VSS | Global Small-Cap Equity | Small-cap growth / diversification |
 | `global_property` | VNQ | Global Property / REITs | Real asset diversification |
 
 ### Converting Returns to Percentages
@@ -358,6 +359,7 @@ curl https://marketdata.countdays.co.uk/api/v1/reference-data
             "developed_equity": { ... },
             "emerging_equity": { ... },
             "global_bonds": { ... },
+            "global_smallcap": { ... },
             "global_property": { ... }
         },
         "status": "ok"
