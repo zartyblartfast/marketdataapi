@@ -1,0 +1,34 @@
+# /etc/systemd/system/retirement-api.service
+# Retirement Data API - Gunicorn service
+#
+# Install:
+#   sudo cp deploy/retirement-api.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now retirement-api
+
+[Unit]
+Description=Retirement Data API (Gunicorn)
+After=network.target
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/retirement-api
+EnvironmentFile=/opt/retirement-api/.env
+ExecStart=/opt/retirement-api/venv/bin/gunicorn -c gunicorn.conf.py wsgi:app
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=30
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/retirement-api/data /opt/retirement-api/logs
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

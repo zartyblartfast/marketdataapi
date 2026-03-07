@@ -1,0 +1,18 @@
+# /etc/systemd/system/retirement-api-update.timer
+# Daily data refresh at 06:00 UTC
+#
+# Install:
+#   sudo cp deploy/retirement-api-update.{service,timer} /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now retirement-api-update.timer
+
+[Unit]
+Description=Daily data refresh for Retirement Data API
+
+[Timer]
+OnCalendar=*-*-* 06:00:00 UTC
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

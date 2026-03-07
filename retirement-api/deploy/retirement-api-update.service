@@ -1,0 +1,23 @@
+# /etc/systemd/system/retirement-api-update.service
+# One-shot service for data refresh (triggered by timer)
+
+[Unit]
+Description=Retirement Data API - Daily Data Refresh
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/retirement-api
+EnvironmentFile=/opt/retirement-api/.env
+ExecStart=/opt/retirement-api/venv/bin/python scripts/update_all.py
+TimeoutStartSec=120
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/retirement-api/data /opt/retirement-api/logs
+ProtectHome=true
+PrivateTmp=true

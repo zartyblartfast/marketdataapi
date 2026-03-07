@@ -1,0 +1,6 @@
+# Agent Zero project metadata
+.a0proj/
+
+# OS files
+.DS_Store
+Thumbs.db
