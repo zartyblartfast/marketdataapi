@@ -136,6 +136,14 @@ curl https://marketdata.countdays.co.uk/api/v1/benchmarks
             "return_1y": 0.056228,
             "source": "tiingo"
         },
+        "global_smallcap": {
+            "label": "Global Small-Cap Equity",
+            "latest_price": 150.10,
+            "price_date": "2026-03-06",
+            "proxy": "VSS",
+            "return_1y": 0.324791,
+            "source": "tiingo"
+        },
         "global_property": {
             "label": "Global Property / REITs",
             "latest_price": 93.55,
