@@ -1,0 +1,21 @@
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Git
+.git/
+.gitignore
+
+# Environment secrets (injected at runtime)
+.env
+
+# Runtime / persistent data (mounted as volumes)
+data/
+logs/
+
+# Deployment scripts (not needed in container)
+deploy/
+
+# Documentation
+README.md

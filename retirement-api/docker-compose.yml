@@ -1,0 +1,25 @@
+# Market Data API — Docker Compose
+# Usage:  docker compose up -d
+# Logs:   docker compose logs -f marketdata
+
+services:
+  marketdata:
+    build: .
+    container_name: marketdata-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"          # host:container
+    env_file:
+      - .env                  # API keys and config
+    volumes:
+      - marketdata-data:/app/data       # cached JSON data persists
+      - marketdata-logs:/app/logs       # log files persist
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/reference-data/health"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  marketdata-data:
+  marketdata-logs:
