@@ -1,0 +1,37 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'retirement-api/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            # Pull latest code to staging area
+            STAGING=/opt/retirement-api-staging
+            if [ ! -d "$STAGING" ]; then
+              git clone https://github.com/zartyblartfast/marketdataapi.git $STAGING
+            else
+              cd $STAGING && git pull origin main
+            fi
+
+            # Sync the retirement-api subfolder to the live directory
+            rsync -av --delete               --exclude='.env'               --exclude='venv/'               --exclude='data/'               --exclude='__pycache__/'               $STAGING/retirement-api/ /opt/retirement-api/
+
+            # Install dependencies and restart
+            cd /opt/retirement-api
+            source venv/bin/activate
+            pip install -r requirements.txt --quiet
+            sudo systemctl restart retirement-api
+            echo "Market Data API deployed successfully"
